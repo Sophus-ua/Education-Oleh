@@ -24,31 +24,3 @@ class Book {
     }
 }
 
-class Title {
-        String title;
-        String show() {
-            return this.title;
-        }
-        void setTitle(String title) {
-            this.title = title;
-        }
-}
-class Author {
-        String author;
-        String show() {
-            return this.author;
-        }
-        void setAuthor(String title) {
-            this.author = title;
-        }
-}
-class Content {
-        String content;
-        String show() {
-            return this.content;
-        }
-        void setContent(String title) {
-            this.content = title;
-        }
-}
-
