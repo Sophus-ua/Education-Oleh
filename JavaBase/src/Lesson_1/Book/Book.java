@@ -21,6 +21,7 @@ public class Book {
         System.out.println("Назва книги: " + title.show());
         System.out.println("Автор: " + author.show());
         System.out.println("Зміст: " + content.show());
+
     }
 
     static class Title {
