@@ -21,11 +21,11 @@ class Worker {
     String getNameEmployer (){
         return this.nameEmployer;
     }
-    Worker edit (int n) {
+    Worker edit (int i) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Введіть ім'я " + (n+1) + "-го співробітника:");
+        System.out.println("Введіть ім'я " + (i+1) + "-го співробітника:");
         String name = in.nextLine();
-        System.out.println("Введіть посаду " + (n+1) + "-го співробітника:");
+        System.out.println("Введіть посаду " + (i+1) + "-го співробітника:");
         String jobTitle = in.nextLine();
         System.out.println("Введіть рік прийому на роботу:");
         int validYear = validateYear();

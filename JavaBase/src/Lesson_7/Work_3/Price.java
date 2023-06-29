@@ -21,8 +21,18 @@ class Price {
         String productName = in.nextLine();
 
         System.out.println("Введіть ціну в грн " + (i+1) + "-го товару:");
-        double priceOfProduct = in.nextDouble();
-
+        double priceOfProduct = 0;
+        boolean replay = true;
+        while (replay){
+            try{
+                if (!in.hasNextDouble()) throw new Exception("Ви ввели невірні данні, спробуйте ще раз:");
+                priceOfProduct = in.nextDouble();
+                replay = false;
+            }catch (Exception e){
+                in.nextLine();
+                System.out.println(e.getMessage());
+            }
+        }
         return new Price(shopName,productName,priceOfProduct);
     }
     Price[] sortArray (Price[] array){
@@ -70,6 +80,6 @@ class Price {
         array = product.sortArray(array);
 
         int i = product.validationShopName(array);
-        System.out.printf("В цьому магазині є %1s за ціною %2$.2f грн\n", array[i].productName, array[i].priceOfProduct);
+        System.out.printf("В цьому магазині є %s за ціною %.2f грн\n", array[i].productName, array[i].priceOfProduct);
     }
 }
