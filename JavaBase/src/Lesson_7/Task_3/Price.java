@@ -1,4 +1,4 @@
-package Lesson_7.Work_3;
+package Lesson_7.Task_3;
 
 import java.util.Scanner;
 
@@ -25,12 +25,11 @@ class Price {
         boolean replay = true;
         while (replay){
             try{
-                if (!in.hasNextDouble()) throw new Exception("Ви ввели невірні данні, спробуйте ще раз:");
                 priceOfProduct = in.nextDouble();
                 replay = false;
             }catch (Exception e){
+                System.out.println("\033[0;31mВи ввели невірні данні, спробуйте ще раз:\033[0m");
                 in.nextLine();
-                System.out.println(e.getMessage());
             }
         }
         return new Price(shopName,productName,priceOfProduct);

@@ -1,4 +1,4 @@
-package Lesson_7.Work_2;
+package Lesson_7.Task_2;
 
 
 

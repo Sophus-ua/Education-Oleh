@@ -1,18 +1,11 @@
-package Lesson_7.Work_5;
+package Lesson_7.Task_5;
 
 import java.util.Scanner;
 
 class Calculator {
     private double a, b;
     private char operation;
-    void div (){
-        try {
-            if (b == 0) throw new ArithmeticException("\033[0;31mДілення на нуль неможливе :(\033[0m");
-            System.out.println("Результат: " +(a/b));
-        } catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+
     void calculations (){
         switch (operation){
             case '+' :
@@ -25,8 +18,12 @@ class Calculator {
                 System.out.println("Результат: " +(a*b));
                 break;
             case '/' :
-                div();
-                break;
+                try {
+                    if (b == 0) throw new ArithmeticException("\033[0;31mДілення на нуль неможливе :(\033[0m");
+                    System.out.println("Результат: " +(a/b));
+                } catch (ArithmeticException e) {
+                    System.out.println(e.getMessage());
+                }
         }
     }
     double inDoubleCheck (){
