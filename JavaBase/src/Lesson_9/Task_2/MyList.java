@@ -11,7 +11,7 @@ public class MyList<T>{
         maxSize = 10;
     }
     void add(T element){
-        if (filledIndex+1>maxSize) increaseSize();
+        if (filledIndex+1==maxSize) increaseSize();
         myList[++filledIndex] = element;
     }
     void increaseSize (){
