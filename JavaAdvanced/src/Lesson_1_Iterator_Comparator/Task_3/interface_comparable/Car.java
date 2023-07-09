@@ -9,22 +9,17 @@ class Car implements Comparable<Car> {
         this.model = model;
         this.color = color;
     }
-
     public String toString() {
         return this.speed + " " + this.price + " " + this.model + " " + this.color;
     }
-
     @Override
     public int compareTo(Car o) {
         int temp = this.speed - o.speed;
-        if (temp == 0) {
-            temp = this.price - o.price;
-            if(temp == 0){
-                temp = this.model.compareTo(o.model);
-                if(temp == 0){
-                    return this.color.compareTo(o.color);
-                }else return temp;
-            }else return temp;
-        } else return temp;
+        if (temp != 0) return temp;
+        temp = this.price - o.price;
+        if (temp != 0) return temp;
+        temp = this.model.compareTo(o.model);
+        if (temp != 0) return temp;
+        return this.color.compareTo(o.color);
     }
 }

@@ -15,15 +15,12 @@ class Main {
         Arrays.sort(c, new Comparator<Car>() {
             public int compare(Car o1, Car o2) {
                 int temp = o1.speed - o2.speed;
-                if (temp == 0) {
-                    temp = o1.price - o2.price;
-                    if(temp == 0){
-                        temp = o1.model.compareTo(o2.model);
-                        if(temp == 0){
-                            return o1.color.compareTo(o2.color);
-                        }else return temp;
-                    }else return temp;
-                } else return temp;
+                if (temp != 0) return temp;
+                temp = o1.price - o2.price;
+                if (temp != 0) return temp;
+                temp = o1.model.compareTo(o2.model);
+                if (temp != 0) return temp;
+                return o1.color.compareTo(o2.color);
             }
         });
 
