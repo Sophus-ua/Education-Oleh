@@ -1,10 +1,10 @@
 package Lesson_5_Reflection.Task_4;
 
 
+import java.io.Serializable;
 
-
-public class Animal {
-
+public class Animal implements Serializable {
+    //Серіалізація для уроку 7
     public String name;
     protected int age;
     private boolean madeAnalyses;
