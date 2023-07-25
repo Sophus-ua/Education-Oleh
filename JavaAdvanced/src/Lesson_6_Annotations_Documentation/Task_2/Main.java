@@ -7,7 +7,7 @@ import java.util.Scanner;
  * The Main class to start the calculation
  * @author Slyvinskyi Oleh
  */
-class Main {
+public class Main {
     /**
      * start of work with calculations
      * @param args some arguments
