@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<city size="big">
+    <name>Kyiv</name>
+    <streets>
+        <street>
+            <name>Khreshchatyk</name>
+            <building>
+                <name>TSUM</name>
+            </building>
+            <building>
+                <name>Ukrposhta 01001</name>
+            </building>
+            <building>
+                <name>hotel 'Khreschatyk'</name>
+            </building>
+        </street>
+        <street>
+            <name>Andriivskyi Descent</name>
+            <building>
+                <name>st Andrew's Church</name>
+            </building>
+            <building>
+                <name>Theater on Podol</name>
+            </building>
+        </street>
+    </streets>
+</city>
