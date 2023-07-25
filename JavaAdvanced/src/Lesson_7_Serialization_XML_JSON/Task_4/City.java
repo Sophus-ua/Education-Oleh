@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@XmlRootElement (name = "city")
+@XmlRootElement(name = "city")
+@XmlType(propOrder = {"name","streets"})
 class City {
 
     @XmlAttribute
-    private String size;
+    private String size = "big";
 
     private String name;
 
@@ -17,16 +18,9 @@ class City {
     @XmlElement(name = "street")
     private List<Street> streets = new ArrayList<>();
 
-    @XmlElement
+
     public void add (Street street) {
         streets.add(street);
-    }
-    public String getSize() {
-        return size;
-    }
-    @XmlElement
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public String getName() {

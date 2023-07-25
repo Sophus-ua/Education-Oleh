@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args) {
         City city = new City();
         city.setName("Kyiv");
-        city.setSize("big");
 
         Street street1 = new Street();
         street1.setName("Khreshchatyk");
@@ -41,7 +40,7 @@ public class Main {
         city.add(street2);
 
         try {
-            Path filePath = Paths.get("src/Lesson_7_Serialization_XML_JSON/Task_4/xmlCity.txt");
+            Path filePath = Paths.get("src/Lesson_7_Serialization_XML_JSON/Task_4/city.xml");
             if (!Files.exists(filePath)) {
                 Files.createFile(filePath);
                 System.out.println("Файл створено;");
