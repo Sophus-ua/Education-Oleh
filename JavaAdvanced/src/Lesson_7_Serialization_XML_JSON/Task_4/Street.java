@@ -13,10 +13,10 @@ import java.util.List;
 class Street {
     private String name;
     @XmlElement(name = "building")
-    private List<Building> buildings = new ArrayList<>();
+    private List<String> buildings = new ArrayList<>();
 
 
-    public void add(Building building) {
+    public void add(String building) {
         buildings.add(building);
     }
 

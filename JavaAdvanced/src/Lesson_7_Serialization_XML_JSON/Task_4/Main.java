@@ -15,26 +15,14 @@ public class Main {
 
         Street street1 = new Street();
         street1.setName("Khreshchatyk");
-
-        Building building1 = new Building();
-        Building building2 = new Building();
-        Building building3 = new Building();
-        building1.setName("TSUM");
-        building2.setName("Ukrposhta 01001");
-        building3.setName("hotel 'Khreschatyk'");
-        street1.add(building1);
-        street1.add(building2);
-        street1.add(building3);
+        street1.add("TSUM");
+        street1.add("Ukrposhta 01001");
+        street1.add("hotel 'Khreschatyk'");
 
         Street street2 = new Street();
         street2.setName("Andriivskyi Descent");
-
-        Building building4 = new Building();
-        Building building5 = new Building();
-        building4.setName("st Andrew's Church");
-        building5.setName("Theater on Podol");
-        street2.add(building4);
-        street2.add(building5);
+        street2.add("st Andrew's Church");
+        street2.add("Theater on Podol");
 
         city.add(street1);
         city.add(street2);
