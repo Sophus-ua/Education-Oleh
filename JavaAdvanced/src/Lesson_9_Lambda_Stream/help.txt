@@ -1,0 +1,26 @@
+Consumer	        BiConsumer
+Predicate           BiPredicate
+Supplier	        BiSupplier
+Function	        BiFunction
+BinaryOperator<T>
+
+                  Supplier<T> нічого не приймає, повертає
+(генерації рандомного числа)
+Supplier<T> supplier = () -> (int)(Math.random() * 100);
+int num = supplier.get(); записує рандомне число;
+                  Consumer<T> приймає, нічого не повертає а виконує дію
+(для виведення результату)
+Consumer<Integer> consumer = x -> System.out.println("Number: " + num);
+consumer.accept(num);  Виводить результат;
+                  Predicate<T> приймає, повертає boolean як результат дії
+(для перевірки дільника на нуль)
+Predicate<Integer> isZero = x -> num == 0;
+predicate.test(num); Повертає boolean;
+                  Function<T,R> приймає один тип, повертає інший
+(для перетворення одного типу на інший)
+Function<T,R> function = x -> Integer.parseInt(string);
+int num = function.apply(str)
+                  BinaryOperator<T> приймає два значення одного типу, повертає одне
+(для виконання дій з двума аргументами)
+BinaryOperator<T> operator = (x, y) -> x + y;
+T result = operator.apply(a, b);
