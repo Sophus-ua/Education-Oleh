@@ -18,7 +18,7 @@ public class Main extends CityStAXparser{
 
     public static void main(String[] args) {
         Main mainWork = new Main();
-        Path xmlFile = Paths.get("O:/JavaC/IDEA Projects/JavaAdvanced/src/Lesson_7_Serialization_XML_JSON/Task_4/exampleFile.xml");
+        Path xmlFile = Paths.get("src/Lesson_7_Serialization_XML_JSON/Task_4/exampleFile.xml");
 
         Street[] streets = mainWork.fillingStreets();
         mainWork.staxParsing(xmlFile,"Kyiv", streets);
