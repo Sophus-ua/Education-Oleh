@@ -38,12 +38,12 @@ primary key (ID, Account_for_payments)
 
 create table Positions_of_employees_in_departments
 (
+Start_date date not null,
 Department_ID int not null,
 Position_ID int not null,
 Employee_ID int not null,
-Start_date date not null,
 End_date date, 
-primary key (Department_ID, Position_ID, Employee_ID),
+primary key (Start_date, Department_ID, Position_ID, Employee_ID),
 foreign key (Department_ID) references Departments(ID),
 foreign key (Position_ID) references Positions(ID),
 foreign key (Employee_ID) references Employees(ID)
