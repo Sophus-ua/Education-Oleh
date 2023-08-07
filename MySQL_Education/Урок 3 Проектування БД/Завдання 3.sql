@@ -33,10 +33,9 @@ Date_of_birth date not null,
 Address varchar(50),
 Phone varchar(20) not null,
 Email varchar(20),
-Account_for_payments int not null unique,
 Hire_date date not null,
 Termination_date date,
-primary key (ID, Account_for_payments)
+primary key (ID)
 );
 
 
@@ -57,7 +56,7 @@ foreign key (Employee_ID) references Employees(ID)
 
 create table Salary_paid
 (
-Payment_ID int not null unique,
+Payment_ID int auto_increment not null,
 Employee_ID int not null,
 Total_base_salary double not null,
 Bonuses_and_additional_compensation double,
