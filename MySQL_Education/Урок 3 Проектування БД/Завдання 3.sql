@@ -4,6 +4,7 @@ create database Human_resources_Department;
 use Human_resources_Department;
 
 
+
 create table Departments
 (
 ID int auto_increment not null,
@@ -13,6 +14,7 @@ Office_number int,
 primary key (ID)
 );
 
+
 create table Positions
 (
 ID int auto_increment not null,
@@ -20,6 +22,7 @@ Position_name varchar(30) not null,
 Brief_description varchar(50),
 primary key (ID)
 );
+
 
 create table Employees
 (
@@ -36,12 +39,14 @@ Termination_date date,
 primary key (ID, Account_for_payments)
 );
 
+
 create table Positions_of_employees_in_departments
 (
 Start_date date not null,
 Department_ID int not null,
 Position_ID int not null,
 Employee_ID int not null,
+Base_salary double not null,
 End_date date, 
 primary key (Start_date, Department_ID, Position_ID, Employee_ID),
 foreign key (Department_ID) references Departments(ID),
@@ -49,17 +54,19 @@ foreign key (Position_ID) references Positions(ID),
 foreign key (Employee_ID) references Employees(ID)
 );
 
+
 create table Salary_paid
 (
 Payment_ID int not null unique,
-Account_for_payments int not null,
-Base_salary double not null,
+Employee_ID int not null,
+Total_base_salary double not null,
 Bonuses_and_additional_compensation double,
 Deductions_and_withholdings double,
 Payment_date date not null,
 primary key (Payment_ID),
-foreign key (Account_for_payments) references Employees(Account_for_payments)
+foreign key (Employee_ID) references Employees(ID)
 );
+
 
 create table Vacancies
 (
