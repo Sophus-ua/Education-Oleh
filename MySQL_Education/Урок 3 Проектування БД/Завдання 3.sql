@@ -71,14 +71,16 @@ create table Vacancies
 (
 ID int auto_increment not null,
 Position_ID int not null,
+Departments_ID int not null,
 Vacancie_title varchar(30) not null,
 Vacancie_description varchar(50) not null, 
 primary key (ID),
-foreign key (Position_ID) references Positions(ID)
+foreign key (Position_ID) references Positions(ID),
+foreign key (Departments_ID) references Departments(ID)
 );
 
 
-
+ 
 
 select * from Departments;
 select * from Positions;
