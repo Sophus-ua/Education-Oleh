@@ -2,42 +2,42 @@ package Lesson_1_JDBC.task_6;
 
 import java.sql.*;
 
-class WorkWithDatabase {
+public class WorkWithDatabase {
     private final String URL = "jdbc:mysql://localhost:3306/test_base_lesson1";
     private final String LOGIN = "root";
     private final String PASSWORD = "root";
 
-    WorkWithDatabase(){
+    public WorkWithDatabase() {
         registerDriver();
     }
 
-    void query (String query){
+    public void queryExecutor(String query) {
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
-            connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             statement = connection.prepareStatement(query);
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try{
+        } finally {
+            try {
                 connection.close();
                 statement.close();
-            }catch (SQLException e2){
+            } catch (SQLException e2) {
                 e2.printStackTrace();
             }
         }
     }
 
-    void printResultToConsole(String query) {
+    public void printResultToConsole(String query) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet result = null;
 
-        try{
-            connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+        try {
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             statement = connection.prepareStatement(query);
             result = statement.executeQuery(query);
 
@@ -51,14 +51,14 @@ class WorkWithDatabase {
                 System.out.println("");
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try{
+        } finally {
+            try {
                 connection.close();
                 statement.close();
                 result.close();
-            }catch (SQLException e2){
+            } catch (SQLException e2) {
                 e2.printStackTrace();
             }
         }
@@ -72,7 +72,6 @@ class WorkWithDatabase {
             e.printStackTrace();
         }
     }
-
 
 
 }

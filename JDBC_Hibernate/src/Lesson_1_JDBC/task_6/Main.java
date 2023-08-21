@@ -26,8 +26,8 @@ class Main {
                 "add bonus int;");
 
 
-        for (int i = 0; i < listOfQueries.size(); i++){
-            workDatabase.query(listOfQueries.get(i));
+        for (int i = 0; i < listOfQueries.size(); i++) {
+            workDatabase.queryExecutor(listOfQueries.get(i));
         }
 
         String query = "select * from Job_position";

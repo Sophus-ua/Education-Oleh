@@ -28,7 +28,7 @@ class Helper {
         WorkWithDatabase work = new WorkWithDatabase();
 
         for (String query : sqlQueries) {
-            if (query.toLowerCase().startsWith("select")) {
+            if (query.trim().toLowerCase().startsWith("select")) {
                 work.printResultToConsole(query);
                 continue;
             }
