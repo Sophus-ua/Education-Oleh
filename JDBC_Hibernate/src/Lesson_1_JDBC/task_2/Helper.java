@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 
 class Helper {
-    static String[] readSqlQueries(Path filePath) {
+    protected static String[] readSqlQueries(Path filePath) {
         String[] sqlQueries = new String[0];
         try {
             String fileContent = Files.readString(filePath, StandardCharsets.UTF_8);
@@ -24,7 +24,8 @@ class Helper {
         return sqlQueries;
     }
 
-    static void queryHandler(String[] sqlQueries) {
+
+    protected static void queryHandler(String[] sqlQueries) {
         WorkWithDatabase work = new WorkWithDatabase();
 
         for (String query : sqlQueries) {

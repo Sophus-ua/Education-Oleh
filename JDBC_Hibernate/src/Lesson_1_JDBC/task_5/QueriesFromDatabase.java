@@ -5,28 +5,26 @@ import java.sql.*;
 
 
 class QueriesFromDatabase {
-    private final String URL = "jdbc:mysql://localhost:3306/myjoinsdb";
-    private final String LOGIN = "root";
-    private final String PASSWORD = "root";
-    Connection connection;
-    PreparedStatement statement;
-    ResultSet result;
+
+    private Connection connection;
+    private PreparedStatement statement;
+    private ResultSet result;
 
 
     QueriesFromDatabase() {
         registerDriver();
         connection = null;
         statement = null;
-        result= null;
+        result = null;
     }
 
 
-    void selectColumns (String... columnNames){
-        selectWithCondition(null,null, columnNames);
+    void selectColumns(String... columnNames) {
+        selectWithCondition(null, null, columnNames);
     }
 
 
-    void selectWithCondition (String fieldForCondition, String condition, String... columnNames) {
+    void selectWithCondition(String fieldForCondition, String condition, String... columnNames) {
         try {
             executeOfStatement(fieldForCondition, condition, columnNames);
             printResultToConsole(columnNames);
@@ -34,6 +32,7 @@ class QueriesFromDatabase {
             e.printStackTrace();
         }
     }
+
 
 
     private void executeOfStatement(String fieldForCondition, String condition, String[] columnNames) throws SQLException {
@@ -45,7 +44,7 @@ class QueriesFromDatabase {
         if (fieldForCondition != null && condition != null)
             SelectAllColumns += (" where " + fieldForCondition + " like \'" + condition + "\'");
 
-        connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+        connection = setConnection();
         statement = connection.prepareStatement(SelectAllColumns);
         result = statement.executeQuery();
     }
@@ -59,9 +58,21 @@ class QueriesFromDatabase {
         }
         connection.close();
         statement.close();
-        result.close();
     }
 
+    private Connection setConnection() {
+        final String URL = "jdbc:mysql://localhost:3306/myjoinsdb";
+        final String LOGIN = "root";
+        final String PASSWORD = "root";
+
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
 
     private void registerDriver() {
         try {
