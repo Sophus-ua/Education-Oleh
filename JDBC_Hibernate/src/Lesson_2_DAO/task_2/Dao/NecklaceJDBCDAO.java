@@ -63,9 +63,7 @@ public class NecklaceJDBCDAO implements INecklaceDAO {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(str)) {
 
-            int result = statement.executeUpdate();
-            System.out.println("З таблиці \'List_of_necklaces\' видалено " + result + " рядків");
-
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
