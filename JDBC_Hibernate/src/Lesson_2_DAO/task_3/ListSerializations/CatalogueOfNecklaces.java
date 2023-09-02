@@ -36,9 +36,8 @@ public class CatalogueOfNecklaces implements Externalizable {
         return listOfNecklace;
     }
 
-
-    public void deleteNecklaceFromCatalog (int id){
-        listOfNecklace.remove(id);
+    public void deleteNecklaceFromCatalog (Necklace necklace){
+        listOfNecklace.remove(necklace);
     }
 
     @Override

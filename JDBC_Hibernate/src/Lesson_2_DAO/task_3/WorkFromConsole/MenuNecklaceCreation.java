@@ -27,17 +27,17 @@ class MenuNecklaceCreation {
         int additionCycle = 1;
 
         while (necklaceCreatingMenu) {
-            printMassage(4);
+            OutputConstants.printMessage(OutputConstants.dashedLine, false);
             if (additionCycle > 1)
-                printMassage(1);
+                OutputConstants.printMessage(OutputConstants.end, false);
 
             System.out.println("введіть \033[1;32mкількість " + additionCycle + "-го \033[0mтипу камнів для намиста:");
             String input = in.next().toLowerCase().strip();
             in.nextLine();
 
             if (input.equals("end")) {
-                printMassage(4);
-                printMassage(3);
+                OutputConstants.printMessage(OutputConstants.dashedLine, false);
+                printCreatedNecklaceInfo();
                 break;
             }
 
@@ -54,18 +54,18 @@ class MenuNecklaceCreation {
                 if (additionCycle == 1) idOfNewNecklace = ConsoleAdministrator.getCatalogue().getNumberOfNecklaces();
                 selectTypeOfGems(in, count);
             } catch (NumberFormatException e) {
-                printMassage(2);
+                OutputConstants.printMessage(OutputConstants.inputErrorData, true);
             }
 
             if (!necklaceCreatingMenu && additionCycle == 1) idOfNewNecklace = -1;
             if (necklaceCreatingMenu && additionCycle == 1) {
-                printMassage(8);
+                System.out.println("Введіть ім'я створенного намиста:");
                 String nameOfNecklace = in.nextLine().strip();
                 ConsoleAdministrator.getCatalogue().getNecklace(idOfNewNecklace).setName(nameOfNecklace);
             }
 
-            printMassage(4);
-            printMassage(3);
+            OutputConstants.printMessage(OutputConstants.dashedLine, false);
+            printCreatedNecklaceInfo();
             additionCycle++;
         }
     }
@@ -73,15 +73,15 @@ class MenuNecklaceCreation {
 
     void selectTypeOfGems(Scanner in, int count) {
         while (true) {
-            printMassage(4);
-            printMassage(1);
-            printMassage(6);
+            OutputConstants.printMessage(OutputConstants.dashedLine, false);
+            OutputConstants.printMessage(OutputConstants.end, false);
+            System.out.println("Доступні типи каменів:");
 
             for (TypeOfGem type : TypeOfGem.values()) {
                 System.out.print("\033[0;95m" + type.name() + "\033[0m;  ");
             }
 
-            printMassage(7);
+            System.out.println("\nВведіть тип каменю з доступних:");
             String input = in.next().toUpperCase().strip();
             in.nextLine();
 
@@ -95,7 +95,7 @@ class MenuNecklaceCreation {
                 selectGemAttributes(in, count, selectedGemType);
                 break;
             } catch (IllegalArgumentException e) {
-                printMassage(2);
+                OutputConstants.printMessage(OutputConstants.inputErrorData, true);
             }
         }
     }
@@ -103,9 +103,9 @@ class MenuNecklaceCreation {
 
     private void selectGemAttributes(Scanner in, int count, TypeOfGem selectedGemType) {
         while (true) {
-            printMassage(4);
-            printMassage(1);
-            printMassage(5);
+            OutputConstants.printMessage(OutputConstants.dashedLine, false);
+            OutputConstants.printMessage(OutputConstants.end, false);
+            System.out.println("Введіть через пробіл(и) \033[1;32m числами вагу в каратах, чистоту(1-10) і насиченість кольору(1-10\033[0m)");
 
 
             String input = in.nextLine().toLowerCase().strip();
@@ -127,7 +127,7 @@ class MenuNecklaceCreation {
 
                 gem = new Gem(count, selectedGemType, caratWeight, clarity, colorSaturation);
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                printMassage(2);
+                OutputConstants.printMessage(OutputConstants.inputErrorData, true);
                 continue;
             } catch (IllegalArgumentException e2) {
                 System.err.println(e2.getMessage());
@@ -148,47 +148,25 @@ class MenuNecklaceCreation {
         try {
             ConsoleAdministrator.getCatalogue().getNecklace(idOfNewNecklace).addGem(gem);
         } catch (IndexOutOfBoundsException | NullPointerException e) {
-            Necklace necklace = new Necklace(idOfNewNecklace+1);
+            Necklace necklace = new Necklace(idOfNewNecklace + 1);
             necklace.addGem(gem);
             ConsoleAdministrator.getCatalogue().addNewNecklaceToList(necklace);
         }
     }
 
-    private void printMassage(int id) {
-        switch (id) {
-            case 1:
-                System.out.println("...введіть \"\033[1;33mEND\033[0m\" для \033[1;32mзавершення створення намиста і виходу\033[0m в головне меню або...");
-                break;
-            case 2:
-                System.err.println("ви ввели невірні дані, спробуйте ще раз.");
-                break;
-            case 3:
-                if (idOfNewNecklace == -1) System.out.println("Нема створенних намист");
-                else {
-                    Necklace necklace = ConsoleAdministrator.getCatalogue().getNecklace(idOfNewNecklace);
-                    System.out.println("ID створеного намиста \033[1;36m" + necklace.getID() + "\033[0m");
-                    System.out.println("ім'я створеного намиста \033[1;36m" + necklace.getName() + "\033[0m");
-                }
-                break;
-            case 4:
-                System.out.println("\033[1;35m_________________________________________________________________________________\033[0m");
-                break;
-            case 5:
-                System.out.println("Введіть через пробіл(и) \033[1;32m числами вагу в каратах, чистоту(1-10) і насиченість кольору(1-10\033[0m)");
-                break;
-            case 6:
-                System.out.println("Доступні типи каменів:");
-                break;
-            case 7:
-                System.out.println("\nВведіть тип каменю з доступних:");
-                break;
-            case 8:
-                System.out.println("Введіть ім'я створенного намиста:");
-                break;
+    private void printCreatedNecklaceInfo() {
+        if (idOfNewNecklace == -1) System.out.println("Нема створенних намист");
+        else {
+            Necklace necklace = ConsoleAdministrator.getCatalogue().getNecklace(idOfNewNecklace);
+            System.out.println("ID створеного намиста \033[1;36m" + necklace.getID() + "\033[0m");
+            System.out.println("ім'я створеного намиста \033[1;36m" + necklace.getName() + "\033[0m");
         }
     }
 
     void setOneGemCreatingMenu(boolean oneGemCreatingMenu) {
         this.oneGemCreatingMenu = oneGemCreatingMenu;
     }
+
+
+
 }
