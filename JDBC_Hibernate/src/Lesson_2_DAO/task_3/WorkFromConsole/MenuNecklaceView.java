@@ -86,7 +86,7 @@ class MenuNecklaceView {
         for (SwitchMenuNecklaceView necklaceViewEnum : SwitchMenuNecklaceView.values())
             if (point == necklaceViewEnum.ordinal()+1) {
                 foundMatch = true;
-                BiConsumer<Scanner, Necklace> biConsumer = necklaceViewEnum.biConsumerExecuteAction(in, necklace, necklaceViewEnum);
+                BiConsumer<Scanner, Necklace> biConsumer = necklaceViewEnum.getBiConsumerExecuteAction(in, necklace, necklaceViewEnum);
                 biConsumer.accept(in, necklace);
             }
         if (!foundMatch) OutputConstants.printMessage(OutputConstants.inputErrorData, true);

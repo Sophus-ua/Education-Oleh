@@ -28,7 +28,7 @@ public enum SwitchMenuNecklaceView {
             System.out.println(value.option);
     }
 
-    BiConsumer<Scanner, Necklace> biConsumerExecuteAction(Scanner in, Necklace necklace, SwitchMenuNecklaceView necklaceViewEnum) {
+    BiConsumer<Scanner, Necklace> getBiConsumerExecuteAction(Scanner in, Necklace necklace, SwitchMenuNecklaceView necklaceViewEnum) {
         MenuNecklaceView menuNecklaceView = new MenuNecklaceView();
 
         switch (necklaceViewEnum) {

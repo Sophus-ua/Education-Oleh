@@ -19,7 +19,7 @@ public enum SwitchConsoleAdministrator {
             System.out.println(value.option);
     }
 
-    Consumer<Scanner> consumerExecuteAction(Scanner in, SwitchConsoleAdministrator switchConsoleAdministrator){
+    Consumer<Scanner> getConsumerExecuteAction(Scanner in, SwitchConsoleAdministrator switchConsoleAdministrator){
         MenuNecklaceCreation mNecklaceCreation = new MenuNecklaceCreation();
         MenuNecklaceView mNecklaceView = new MenuNecklaceView();
 

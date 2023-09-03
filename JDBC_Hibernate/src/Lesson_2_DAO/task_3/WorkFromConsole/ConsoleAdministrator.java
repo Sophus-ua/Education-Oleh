@@ -35,7 +35,7 @@ public class ConsoleAdministrator {
             for (SwitchConsoleAdministrator consoleEnum : SwitchConsoleAdministrator.values())
                 if (point == consoleEnum.ordinal()+1){
                     foundMatch = true;
-                    Consumer<Scanner> menuAction = consoleEnum.consumerExecuteAction(in, consoleEnum);
+                    Consumer<Scanner> menuAction = consoleEnum.getConsumerExecuteAction(in, consoleEnum);
                     menuAction.accept(in);
                 }
             if (!foundMatch) OutputConstants.printMessage(OutputConstants.inputErrorData, true);
