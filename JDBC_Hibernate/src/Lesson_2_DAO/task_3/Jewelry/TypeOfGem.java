@@ -8,15 +8,15 @@ public enum TypeOfGem {
     EMERALD(4000,1.1, 0.7, 0.8),
     RUBY(3000,1.2, 0.6, 0.7),
     AQUAMARINE(3000,1.05, 0.8, 0.7),
-    AMETHYST(2500,1.05, 0.9, 0.5),
     TOPAZ(2500,1.1, 0.7, 0.6),
-    FIANIT(1500,	1.1, 0.8, 0.6),
     SAPPHIRE(2000,1.15, 0.7, 0.9),
+    AMETHYST(2500,1.05, 0.9, 0.5),
     GARNET(2000,1.05, 0.7, 0.9),
     CITRINE(2000,1.05, 0.8, 0.7),
+    FIANIT(1500,	1.1, 0.8, 0.6),
     OPAL(1500,1.1, 0.9, 0.8),
-    AGATE(1000,1.0, 0.8, 0.7),
-    MALACHITE(1000,1.0, 0.7, 0.6);
+    MALACHITE(1000,1.0, 0.7, 0.6),
+    AGATE(1000,1.0, 0.8, 0.7);
     private double basePrice, weightFactor, clarityFactor, colorFactor;
 
     TypeOfGem (double basePrice, double weightFactor, double clarityFactor, double colorFactor){

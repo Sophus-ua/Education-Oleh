@@ -12,12 +12,12 @@ import java.util.Scanner;
 import java.util.function.BiConsumer;
 
 class MenuNecklaceView {
-    private boolean inMenuListOfNecklaces;
-    private boolean inMenuNeckLace;
+    private static boolean inMenuListOfNecklaces;
+    private static boolean inMenuNeckLace;
 
     MenuNecklaceView(){
-        inMenuListOfNecklaces = false;
-        inMenuNeckLace = false;
+        inMenuListOfNecklaces = true;
+        inMenuNeckLace = true;
     }
 
     void menuListOfNecklaces(Scanner in) {

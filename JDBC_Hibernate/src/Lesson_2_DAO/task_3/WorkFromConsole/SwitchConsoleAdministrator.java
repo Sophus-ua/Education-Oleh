@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.util.function.Consumer;
 
 public enum SwitchConsoleAdministrator {
-    NECKLACE_CREATION("\033[1;32m 1 \033[0m- для початку створення нового намиста"),
-    NECKLACE_VIEW("\033[1;32m 2 \033[0m- для входу в меню створенних намист"),
-    ONE_GEM_CREATING("\033[1;32m 3 \033[0m- дізнатись ціну бажаного драгоцінного каменя"),
-    QUIT("\033[1;32m 4 \033[0m- \033[1;31mВИХІД\033[0m з программи");
+    NECKLACE_CREATION("для початку створення нового намиста"),
+    NECKLACE_VIEW("для входу в меню створенних намист"),
+    ONE_GEM_CREATING("дізнатись ціну бажаного драгоцінного каменя"),
+    QUIT("\033[1;31mВИХІД\033[0m з программи");
 
     private final String option;
     SwitchConsoleAdministrator(String option) {
@@ -16,9 +16,8 @@ public enum SwitchConsoleAdministrator {
 
     static void printOptions() {
         for (SwitchConsoleAdministrator value : SwitchConsoleAdministrator.values())
-            System.out.println(value.option);
+            System.out.println("\033[1;32m " + (value.ordinal()+1) + " \033[0m- " + value.option);
     }
-
     Consumer<Scanner> getConsumerExecuteAction(Scanner in, SwitchConsoleAdministrator switchConsoleAdministrator){
         MenuNecklaceCreation mNecklaceCreation = new MenuNecklaceCreation();
         MenuNecklaceView mNecklaceView = new MenuNecklaceView();
