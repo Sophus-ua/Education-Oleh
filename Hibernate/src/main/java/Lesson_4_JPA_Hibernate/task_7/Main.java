@@ -31,17 +31,17 @@ class Main {
         animalHelper.addAnimal(animal3);
 
 
-
-        Animal animal = animalHelper.getAnimalById((long)3);
+        Animal animal = animalHelper.getAnimalById((long) 3);
         System.out.println(str1 + animal + str2);
         animal3.setAge(4);
         animalHelper.updateAnimal(animal);
-        System.out.println(str1 + animalHelper.getAnimalById((long)3) + str2);
+        System.out.println(str1 + animalHelper.getAnimalById((long) 3) + str2);
         animalHelper.deleteAnimal(animal);
 
         List<Animal> animals = animalHelper.getAllAnimals();
         for (Animal a : animals)
             System.out.println(str1 + a + str2);
-    }
 
+        animalHelper.closeEntityManagerFactory();
+    }
 }

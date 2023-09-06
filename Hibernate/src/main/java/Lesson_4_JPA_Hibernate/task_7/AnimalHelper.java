@@ -54,4 +54,9 @@ class AnimalHelper {
 
         return animals;
     }
+
+
+    public void closeEntityManagerFactory() {
+        emf.close();
+    }
 }
