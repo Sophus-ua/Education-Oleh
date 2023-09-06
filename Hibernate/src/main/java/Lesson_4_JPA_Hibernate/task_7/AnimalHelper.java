@@ -21,14 +21,12 @@ class AnimalHelper {
         em.getTransaction().begin();
         em.persist(animal);
         em.getTransaction().commit();
-
     }
 
     public void updateAnimal(Animal animal) {
         em.getTransaction().begin();
         em.merge(animal);
         em.getTransaction().commit();
-
     }
 
     public Animal getAnimalById(Long id) {
@@ -43,7 +41,6 @@ class AnimalHelper {
         em.getTransaction().begin();
         em.remove(animal);
         em.getTransaction().commit();
-
     }
 
     public List<Animal> getAllAnimals() {
@@ -57,6 +54,7 @@ class AnimalHelper {
 
 
     public void closeEntityManagerFactory() {
+        em.close();
         emf.close();
     }
 }
