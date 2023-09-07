@@ -17,7 +17,7 @@ class HibernateUtil {
         if (factory == null){
             try {
                 factory = new Configuration()
-                        .configure("hibernate_Lesson4_task7.cfg.xml")
+                        .configure("hibernate_Lesson5.cfg.xml")
                         .buildSessionFactory();
             } catch (HibernateException e) {
                 LOG.error(e);

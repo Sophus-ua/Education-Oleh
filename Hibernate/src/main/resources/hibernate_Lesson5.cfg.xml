@@ -20,8 +20,8 @@
         <property name="logging.format">SQL</property>
         <property name="logging.path">hibernate.log</property>
 
-        <mapping class="Lesson_5_Hibernate.task_6.entity.Author"/>
-        <mapping class="Lesson_5_Hibernate.task_6.entity.Book"/>
+        <mapping class="Lesson_5_Hibernate.entity.Author"/>
+        <mapping class="Lesson_5_Hibernate.entity.Book"/>
     </session-factory>
 </hibernate-configuration>
 
