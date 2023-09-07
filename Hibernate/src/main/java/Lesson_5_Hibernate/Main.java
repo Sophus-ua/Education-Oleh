@@ -38,7 +38,7 @@ class Main {
         bookHelper.updateBookNameByID(1, "Сон");
 
         /* завдання 5-ть */
-        BookHelper.AuthorsWorksList authorsWorksList = bookHelper.getAuthorsWorksList("Тарас Григорович Шевченко");
-        System.out.println("\033[1;36m" + authorsWorksList.toString() + "\033[0m");
+        String authorsWorks = bookHelper.getAuthorsWorks("Тарас Григорович Шевченко");
+        System.out.println("\033[1;36m" + authorsWorks + "\033[0m");
     }
 }

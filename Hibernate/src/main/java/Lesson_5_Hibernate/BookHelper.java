@@ -12,29 +12,9 @@ import java.util.List;
 class BookHelper {
     private final SessionFactory sessionFactory;
 
-    static class AuthorsWorksList {
-        private final String authorName;
-        private final String[] booksName;
-
-        AuthorsWorksList(String authorName, String[] booksName) {
-            this.authorName = authorName;
-            this.booksName = booksName;
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder books = new StringBuilder();
-            int count = 0;
-            for (String b : booksName) {
-                count++;
-                if (count == 1)
-                    books.append(b);
-                else
-                    books.append(", ").append(b);
-            }
-
-            return "Автор: " + authorName + "; його книги: " + books + ";";
-        }
+    @FunctionalInterface
+    private interface AuthorsWorksList {
+        String getString(String authorName, String[] booksName);
     }
 
     public BookHelper() {
@@ -54,7 +34,7 @@ class BookHelper {
     }
 
     /* завдання 5-ть */
-    public AuthorsWorksList getAuthorsWorksList(String authorName) {
+    public String getAuthorsWorks(String authorName) {
         try (Session session = sessionFactory.openSession()) {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<String> query = cb.createQuery(String.class);
@@ -67,19 +47,30 @@ class BookHelper {
 
 
             Query<String> bookResultQuery = session.createQuery(query);
-            List<String> bookNames = bookResultQuery.getResultList();
+            List<String> bookNamesList = bookResultQuery.getResultList();
+            String[] bookNamesArray = bookNamesList.toArray(new String[0]);
 
-            return new AuthorsWorksList(authorName, bookNames.toArray(new String[0]));
+            AuthorsWorksList authorsWorksList = (x, y) -> {
+                StringBuilder books = new StringBuilder();
+                for (int i = 0; i < y.length; i++) {
+                    if (i == 0) books.append(y[i]);
+                     else books.append(", ").append(y[i]);
+                }
+                return "Автор: " + x + "; його книги: " + books + ";";
+            };
+
+            return authorsWorksList.getString(authorName,bookNamesArray);
         }
     }
 
     public Book addBook(Book book) {
         try (Session session = sessionFactory.openSession()) {
-        session.beginTransaction();
-        session.save(book);
-        session.getTransaction().commit();
+            session.beginTransaction();
+            session.save(book);
+            session.getTransaction().commit();
 
-        return book;
+            return book;
         }
     }
+
 }
