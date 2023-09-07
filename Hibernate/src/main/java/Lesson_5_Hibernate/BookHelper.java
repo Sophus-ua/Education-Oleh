@@ -1,11 +1,11 @@
 package Lesson_5_Hibernate;
 
 
-
 import Lesson_5_Hibernate.entity.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+
 import javax.persistence.criteria.*;
 import java.util.List;
 
@@ -43,43 +43,43 @@ class BookHelper {
 
     /* завдання 4-и */
     public void updateBookNameByID(long book_ID, String bookName) {
-        Session session = sessionFactory.openSession();
-        Book book = session.get(Book.class, book_ID);
-        book.setName(bookName);
+        try (Session session = sessionFactory.openSession()) {
+            Book book = session.get(Book.class, book_ID);
+            book.setName(bookName);
 
-        session.beginTransaction();
-        session.save(book);
-        session.getTransaction().commit();
-        session.close();
+            session.beginTransaction();
+            session.save(book);
+            session.getTransaction().commit();
+        }
     }
 
     /* завдання 5-ть */
     public AuthorsWorksList getAuthorsWorksList(String authorName) {
-        Session session = sessionFactory.openSession();
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<String> query = cb.createQuery(String.class);
+        try (Session session = sessionFactory.openSession()) {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<String> query = cb.createQuery(String.class);
 
 
-        Root<Book> bookRoot = query.from(Book.class);
-        long authorId = new AuthorHelper().getIdByAuthorName(authorName);
-        query.select(bookRoot.get("name"))
-                .where(cb.equal(bookRoot.get("authorId"), authorId));
+            Root<Book> bookRoot = query.from(Book.class);
+            long authorId = new AuthorHelper().getIdByAuthorName(authorName);
+            query.select(bookRoot.get("name"))
+                    .where(cb.equal(bookRoot.get("authorId"), authorId));
 
 
-        Query<String> bookResultQuery = session.createQuery(query);
-        List<String> bookNames = bookResultQuery.getResultList();
+            Query<String> bookResultQuery = session.createQuery(query);
+            List<String> bookNames = bookResultQuery.getResultList();
 
-        session.close();
-        return new AuthorsWorksList(authorName, bookNames.toArray(new String[0]));
+            return new AuthorsWorksList(authorName, bookNames.toArray(new String[0]));
+        }
     }
 
     public Book addBook(Book book) {
-        Session session = sessionFactory.openSession();
+        try (Session session = sessionFactory.openSession()) {
         session.beginTransaction();
         session.save(book);
         session.getTransaction().commit();
-        session.close();
 
         return book;
+        }
     }
 }
