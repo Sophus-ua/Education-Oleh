@@ -6,6 +6,7 @@ import Lesson_4_JPA_Hibernate.task_6.entity.Book;
 import java.util.List;
 
 class Main {
+
     public static void main(String[] args) {
         Author author = new Author();
         author.setName("Тарас Шевченко");
@@ -17,10 +18,10 @@ class Main {
 
         Book book1 = new Book();
         book1.setName("Кобзар");
-        book1.setAuthor_id(idOfAuthor);
+        book1.setAuthorId(idOfAuthor);
         Book book2 = new Book();
         book2.setName("Заповіт");
-        book2.setAuthor_id(idOfAuthor);
+        book2.setAuthorId(idOfAuthor);
         BookHelper bookHelper = new BookHelper();
         bookHelper.addBook(book1);
         bookHelper.addBook(book2);
