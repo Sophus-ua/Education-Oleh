@@ -1,9 +1,6 @@
 package Lesson_4_JPA_Hibernate.task_6.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Book {
@@ -12,12 +9,13 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private long author_id;
+    @Column(name = "author_id")
+    private long authorId;
 
 
     @Override
     public String toString() {
-        return "ID: " + getId() + ", назва книги: " + getName() + ", ID автора: " + getAuthor_id();
+        return "ID: " + getId() + ", назва книги: " + getName() + ", ID автора: " + getAuthorId();
     }
     public long getId() {
         return id;
@@ -35,12 +33,12 @@ public class Book {
         this.name = name;
     }
 
-    public long getAuthor_id() {
-        return author_id;
+    public long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(long author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(long authorId) {
+        this.authorId = authorId;
     }
 
 }
