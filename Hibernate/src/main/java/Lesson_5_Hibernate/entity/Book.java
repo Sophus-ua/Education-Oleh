@@ -1,4 +1,4 @@
-package Lesson_5_Hibernate.task_6.entity;
+package Lesson_5_Hibernate.entity;
 
 import javax.persistence.*;
 

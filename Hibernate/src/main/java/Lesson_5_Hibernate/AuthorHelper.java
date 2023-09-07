@@ -1,6 +1,6 @@
-package Lesson_5_Hibernate.task_6;
+package Lesson_5_Hibernate;
 
-import Lesson_5_Hibernate.task_6.entity.Author;
+import Lesson_5_Hibernate.entity.Author;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

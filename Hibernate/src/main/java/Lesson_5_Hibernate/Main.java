@@ -1,8 +1,8 @@
-package Lesson_5_Hibernate.task_6;
+package Lesson_5_Hibernate;
 
 
-import Lesson_5_Hibernate.task_6.entity.Author;
-import Lesson_5_Hibernate.task_6.entity.Book;
+import Lesson_5_Hibernate.entity.Author;
+import Lesson_5_Hibernate.entity.Book;
 
 class Main {
     private void addShevchenkoBooks(AuthorHelper authorHelper, BookHelper bookHelper){

@@ -1,4 +1,4 @@
-package Lesson_5_Hibernate.task_6;
+package Lesson_5_Hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
