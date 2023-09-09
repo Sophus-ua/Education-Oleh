@@ -1,4 +1,4 @@
-package mappingClass;
+package Lesson_3_mapping_classes;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
