@@ -20,6 +20,6 @@
 
         <!--при виконанні sql запитів ми будемо їх бачити-->
         <property name="show_sql">true</property>
-        <mapping class="mappingClass.AnimalMapping"/>
+        <mapping class="Lesson_3_mapping_classes.AnimalMapping"/>
     </session-factory>
 </hibernate-configuration>
