@@ -123,21 +123,16 @@ public class AuthorHelper {
     }
 
     /* завдання 5 */
-    public List<Author> findAuthorsByLastName (String lastName) throws LibraryException {
+    public List<Author> executeQuery (String hqlQuery) throws LibraryException {
         try(Session session = factory.openSession()){
-            CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<Author> cQuery = cb.createQuery(Author.class);
-
-            Root<Author> authorRoot = cQuery.from(Author.class);
-            cQuery.select(authorRoot).where(cb.equal(authorRoot.get("lastName"), lastName));
-
-            Query query = session.createQuery(cQuery);
-            List<Author> authors = query.getResultList();
-
-            if (authors == null) throw new LibraryException("Автора з таким 'Last Name' немає в базі");
-            return authors;
+            Query query = session.createQuery(hqlQuery);
+            List<?> resultList = query.getResultList();
+            if (resultList == null) throw new LibraryException("Запит не виконався");
+            if (resultList.isEmpty() || !(resultList.get(0) instanceof Author) ) throw new LibraryException("Запит не дав результату");
+            else return (List<Author>) resultList;
         }
     }
+
 
     private Session getOpenedSession() {
         return openedSession;

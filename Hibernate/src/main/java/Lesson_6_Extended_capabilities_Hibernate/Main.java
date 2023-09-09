@@ -23,7 +23,8 @@ class Main {
 
         /* завдання 5 */
         try {
-            List<Author> authors = authorHelper.findAuthorsByLastName("Кинг");
+            String hqlQuery = "from Author where lastName = 'Кинг'";
+            List<Author> authors = authorHelper.executeQuery(hqlQuery);
             for (Author a : authors)
                 System.out.println("\033[1;32m" + a + "\033[0m");
         } catch (LibraryException e) {
