@@ -1,4 +1,4 @@
-package mappingClass;
+package Lesson_3_mapping_classes;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
