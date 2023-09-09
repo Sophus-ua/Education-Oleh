@@ -14,7 +14,7 @@ class HomeWork {
     /* завдання 3 */
     public void deleteBooks(BookHelper bookHelper){
         try {
-            bookHelper.deleteBooksByAuthorName("Mark", "Ploirier");
+            bookHelper.deleteBooksByAuthorName("Mark", "Poirier");
         } catch (LibraryException e) {
             System.out.println(e.getMessage());
         }
