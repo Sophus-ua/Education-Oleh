@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
-
 class HomeWork {
     /* завдання 3 */
     public void deleteBooks(BookHelper bookHelper){
