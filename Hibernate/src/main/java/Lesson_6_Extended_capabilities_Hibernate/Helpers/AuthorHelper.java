@@ -4,6 +4,7 @@ package Lesson_6_Extended_capabilities_Hibernate.Helpers;
 import Lesson_6_Extended_capabilities_Hibernate.Entity.Author;
 import Lesson_6_Extended_capabilities_Hibernate.Entity.Book;
 import Lesson_6_Extended_capabilities_Hibernate.LibraryException;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -15,24 +16,26 @@ import java.util.List;
 public class AuthorHelper {
 
     private final SessionFactory factory;
-    private Session openedSession;
 
     public AuthorHelper() {
         factory = HibernateUtil.getSessionFactory();
     }
 
     public Author getAuthorById(long id) throws LibraryException {
-        return getAuthorById(id, true);
+        return getAuthorById(id, false);
     }
 
-    private Author getAuthorById(long id, boolean toCloseSession) throws LibraryException {
-        Session session = factory.openSession();
-        Author author = session.get(Author.class, id);
-        if (toCloseSession) session.close();
-        else this.openedSession = session;
+    private Author getAuthorById(long id, boolean getBooks) throws LibraryException {
+        try (Session session = factory.openSession()) {
 
-        if (author == null) throw new LibraryException("Автора з таким ID нема в базі данних");
-        else return author;
+            Author author = session.get(Author.class, id);
+
+            if (author == null) throw new LibraryException("Автора з таким ID нема в базі данних");
+            if (getBooks)
+                Hibernate.initialize(author.getBooks());
+
+            return author;
+        }
     }
 
     public long getIdOfAuthor(String firstName, String lastName) throws LibraryException {
@@ -60,7 +63,8 @@ public class AuthorHelper {
         long authorID = -1;
         try {
             authorID = getIdOfAuthor(author.getFirstName(), author.getLastName());
-        } catch (LibraryException ignored) {}
+        } catch (LibraryException ignored) {
+        }
 
         try (Session session = factory.openSession()) {
             if (authorID == -1) {
@@ -97,19 +101,17 @@ public class AuthorHelper {
     /* завдання 3 */
     public void deleteBooksByAuthorID(long id) throws LibraryException {
         try (Session session = factory.openSession()) {
-            Author author = getAuthorById(id, false);
-            List<Book> books = author.getBooks();
-            if (books == null || books.isEmpty())
-                throw new LibraryException("Книг цього автора немає в базі данних");
+            Author author = getAuthorById(id, true);
+
+            if (author.getBooks() == null || author.getBooks().isEmpty())
+                throw new LibraryException("Книг цього автора немає в базі данних getAuthorById");
 
             int count = 0;
-            for (Book b : books) {
+            for (Book b : author.getBooks()) {
                 new BookHelper().deleteBookByID(b.getId());
                 count++;
             }
             System.out.println("\033[4;36mБуло видалено " + count + " книг автора " + author.getFirstName() + " " + author.getLastName() + "\033[0m");
-        } finally {
-            getOpenedSession().close();
         }
     }
 
@@ -123,18 +125,14 @@ public class AuthorHelper {
     }
 
     /* завдання 5 */
-    public List<Author> executeQuery (String hqlQuery) throws LibraryException {
-        try(Session session = factory.openSession()){
+    public List<Author> executeQuery(String hqlQuery) throws LibraryException {
+        try (Session session = factory.openSession()) {
             Query query = session.createQuery(hqlQuery);
             List<?> resultList = query.getResultList();
             if (resultList == null) throw new LibraryException("Запит не виконався");
-            if (resultList.isEmpty() || !(resultList.get(0) instanceof Author) ) throw new LibraryException("Запит не дав результату");
+            if (resultList.isEmpty() || !(resultList.get(0) instanceof Author))
+                throw new LibraryException("Запит не дав результату");
             else return (List<Author>) resultList;
         }
-    }
-
-
-    private Session getOpenedSession() {
-        return openedSession;
     }
 }

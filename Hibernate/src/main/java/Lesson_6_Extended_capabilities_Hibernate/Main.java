@@ -19,16 +19,20 @@ class Main {
         homeWork.deleteBooks(bookHelper);
 
         /* завдання 2 */
-        homeWork.updateNameWhereMoreThan7(authorHelper);
+        homeWork.updateNameWhereMoreThan6(authorHelper);
 
         /* завдання 5 */
         try {
             String hqlQuery = "from Author where lastName = 'Кинг'";
             List<Author> authors = authorHelper.executeQuery(hqlQuery);
-            for (Author a : authors)
-                System.out.println("\033[1;32m" + a + "\033[0m");
+
+            System.out.print("\033[1;32m");
+            authors.forEach(System.out::println);
+
         } catch (LibraryException e) {
             System.out.println(e.getMessage());
+        } finally {
+            System.out.print("\033[0m");
         }
     }
 }

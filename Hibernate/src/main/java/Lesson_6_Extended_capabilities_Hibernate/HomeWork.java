@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
+
 class HomeWork {
     /* завдання 3 */
-    public void deleteBooks(BookHelper bookHelper){
+    public void deleteBooks(BookHelper bookHelper) {
         try {
             bookHelper.deleteBooksByAuthorName("Mark", "Poirier");
         } catch (LibraryException e) {
@@ -25,13 +26,13 @@ class HomeWork {
     }
 
     /* завдання 2 */
-    public void updateNameWhereMoreThan7(AuthorHelper authorHelper) {
+    public void updateNameWhereMoreThan6(AuthorHelper authorHelper) {
         List<Author> authorList = authorHelper.getAuthorList();
-        for (Author a : authorList){
-            if(a.getLastName().length() > 6)
+        for (Author a : authorList) {
+            if (a.getLastName().length() > 6)
                 try {
-                    authorHelper.changeFirstNameByID(a.getId(),"1");
-                } catch (LibraryException e){
+                    authorHelper.changeFirstNameByID(a.getId(), "1");
+                } catch (LibraryException e) {
                     System.out.println(e.getMessage());
                 }
         }
