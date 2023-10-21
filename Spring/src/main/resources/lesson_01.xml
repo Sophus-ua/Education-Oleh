@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="knightBoris" class="org.example.Lesson_01.task_02.Knight">
+        <constructor-arg index="0" value="Boris"/>
+    </bean>
+
+    <bean id="CaveOfRobbers" class="org.example.Lesson_01.task_02.quest.CaveOfRobbers"/>
+    <bean id="DragonGorge" class="org.example.Lesson_01.task_02.quest.DragonGorge"/>
+    <bean id="IngredientsForPotion" class="org.example.Lesson_01.task_02.quest.IngredientsForPotion"/>
+
+
+
+</beans>
