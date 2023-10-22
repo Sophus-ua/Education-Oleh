@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    task 04-->
+    <bean id="user_01" class="org.example.Lesson_02.task_04.User">
+        <constructor-arg type="java.lang.String" value="Boris"/>
+    </bean>
+    <bean id="user_02" class="org.example.Lesson_02.task_04.User">
+        <constructor-arg index="0" value="Kiril"/>
+    </bean>
+    <bean id="user_03" class="org.example.Lesson_02.task_04.User">
+        <constructor-arg name="name" value="Ivan"/>
+    </bean>
+
+    <util:map id="usersMap" map-class="java.util.HashMap">
+        <entry key-ref="user_01" value-ref="user_01"/>
+        <entry key-ref="user_02" value-ref="user_02"/>
+        <entry key-ref="user_03" value-ref="user_03"/>
+    </util:map>
+
+<!--    task 02   -->
+    <bean id="myBook" class="org.example.Lesson_02.task_02.Book" init-method="init">
+        <constructor-arg type="java.lang.String" value="Kobzar"/>
+        <property name="Author" value="Taras Shevchenko"/>
+    </bean>
+
+
+
+</beans>
