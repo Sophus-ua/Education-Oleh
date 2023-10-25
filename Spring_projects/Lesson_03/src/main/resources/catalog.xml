@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog_of_users>
+    <user>
+        <name>Oleh</name>
+        <password>11111</password>
+    </user>
+    <user>
+        <name>Anna</name>
+        <password>22222</password>
+    </user>
+    <user>
+        <name>Mash</name>
+        <password>33333</password>
+    </user>
+    <user>
+        <name>Oksana</name>
+        <password>44444</password>
+    </user>
+</catalog_of_users>
